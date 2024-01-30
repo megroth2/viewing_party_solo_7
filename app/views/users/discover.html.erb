@@ -1,0 +1,11 @@
+<% if @user %>
+  <%= button_to "Discover Top Rated Movies", "users/:user_id/movies" %></br>
+
+  <%= form_with url: "/users/:id/discover", method: :get, data: { turbo: false } do |f| %>
+    <%= f.label "enter keyword(s)" %>
+    <%= f.text_field :search %>
+    <%= f.submit "Search by Movie Title" %>
+  <% end %>
+<% else %>
+    <h3><%= "Error: user does not exist" %></h3>
+<% end %>
