@@ -9,4 +9,6 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :create] do
   end
+  
+  get "/users/:id/discover", to: "users#discover"
 end

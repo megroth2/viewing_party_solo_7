@@ -19,7 +19,10 @@ class UsersController < ApplicationController
       end   
    end
 
-
+   def discover
+      @user = User.find_by(id: params[:id])
+      # flash[:alert] = "Error: user does not exist" unless @user # commented this out and moved it to the discover view because the error was staying on the page until i refreshed it twice. I'm not sure why.
+   end
 
 
 private
