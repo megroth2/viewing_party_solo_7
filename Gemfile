@@ -46,8 +46,6 @@ gem "bootstrap"
 gem "faker"
 gem "faraday"
 
-
-
 # Use Sass to process CSS
 gem "sassc-rails"
 
@@ -77,4 +75,6 @@ group :test do
   gem "capybara"
   gem "launchy"
   gem "simplecov"
+  gem "webmock"
+  gem "vcr"
 end
