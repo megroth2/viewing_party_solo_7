@@ -3,8 +3,9 @@ require 'rails_helper'
 RSpec.describe 'Discover Movies: Search By Title', type: :feature do
 
   before(:each) do
-    # @user_1 = User.create!(name: 'Tommy', email: 'tommy@email.com')
+    @user_1 = User.create!(name: 'Tommy', email: 'tommy@email.com')
     # @user_2 = User.create!(name: 'Sam', email: 'sam@email.com')
+    visit "/users/#{@user_1.id}/discover"
   end
 
   describe '1. Discover Movies: Search by Title' do
@@ -16,39 +17,42 @@ RSpec.describe 'Discover Movies: Search By Title', type: :feature do
     # - a button to Search by Movie Title
     
     it "displays an error message if the id provided doesn't match a valid user" do
-      visit "/users/1/discover"
+      visit "/users/5/discover"
 
       expect(page).to have_content("Error:")
 
-      user_1 = User.create!(name: 'Tommy', email: 'tommy@email.com')
-
-      visit "/users/#{user_1.id}/discover"
+      visit "/users/#{@user_1.id}/discover"
 
       expect(page).to_not have_content("Error:")
     end
 
     it "displays a button to Discover Top Rated Movies" do
-      user_1 = User.create!(name: 'Tommy', email: 'tommy@email.com')
-
-      visit "/users/#{user_1.id}/discover"
-
       expect(page).to have_button("Discover Top Rated Movies")
     end
 
     it "displays a text field to enter keyword(s) to search by movie title" do
-      user_1 = User.create!(name: 'Tommy', email: 'tommy@email.com')
-
-      visit "/users/#{user_1.id}/discover"
-
       expect(page).to have_content("Enter keyword(s)")
     end
 
     it "displays a button to Search by Movie Title" do
-      user_1 = User.create!(name: 'Tommy', email: 'tommy@email.com')
-
-      visit "/users/#{user_1.id}/discover"
-
       expect(page).to have_button("Search by Movie Title")
+    end
+  end
+
+  describe "2. Movie Results Page" do
+    # When I visit the discover movies page ('/users/:id/discover'),
+    # and click on either the Discover Top Rated Movies button or fill out the movie title search and click the Search button,
+    # I should be taken to the movies results page (`users/:user_id/movies`) where I see: 
+    # - Title (As a Link to the Movie Details page (see story #3))
+    # - Vote Average of the movie
+    # I should also see a button to return to the Discover Page.
+
+    it "consumes a top rated movies api" do
+
+    end
+
+    it "consumes a movie keywords api" do
+
     end
   end
 end
