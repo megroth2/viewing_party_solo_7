@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   end
   
   get "/users/:id/discover", to: "users#discover"
-  get "/users/:id/movies", to: "users#movies"
+  post "/users/:id/movies", to: "users#movies"
 end
