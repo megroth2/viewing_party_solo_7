@@ -24,6 +24,10 @@ class UsersController < ApplicationController
       # flash[:alert] = "Error: user does not exist" unless @user # i moved this error to the discover view because the error was staying on the page until i refreshed it twice. I'm not sure why.
    end
 
+   def movies
+      
+
+   end
 
 private
 
