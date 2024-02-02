@@ -5,7 +5,7 @@ RSpec.describe MovieService do
     @service = MovieService.new
   end
 
-  xit "exists" do
+  it "exists" do
     expect(@service).to be_a(MovieService)
   end
 

@@ -15,7 +15,7 @@ RSpec.describe 'Discover Movies: Search By Title', type: :feature do
     # - Vote Average of the movie
     # I should also see a button to return to the Discover Page.
 
-    xit "can display top rated movies" do
+    it "can display top rated movies" do
       expect(page).to have_content("The Shawshank Redemption")
       expect(page).to have_content("Vote Average: 8.711")
     end

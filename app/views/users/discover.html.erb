@@ -1,4 +1,5 @@
-<% if @user %>
+<% # this if statement could be moved to the discover action in the users controller, but I was encountering an issue so I put it here %>
+<% if @user %> 
   <%= button_to "Discover Top Rated Movies", "/users/#{params[:id]}/movies" %></br>
 
   <%= form_with url: "/users/#{params[:id]}/movies", method: :get, data: { turbo: false } do |f| %>
