@@ -26,7 +26,6 @@ class UsersController < ApplicationController
 
    def movies
       
-
    end
 
 private

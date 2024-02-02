@@ -1,8 +1,17 @@
 require "rails_helper"
 
 RSpec.describe MovieService do
+  before(:each) do
+    @service = MovieService.new
+  end
+
+  xit "exists" do
+    expect(@service).to be_a(MovieService)
+  end
+
   it "returns movie data by keyword", :vcr do
-    search = MovieService.new.movies_by_keyword("princess")
+    search = @service.movies_by_keyword("princess")
+
     expect(search).to be_a(Hash)
     expect(search[:results]).to be_an(Array)
 
@@ -17,7 +26,7 @@ RSpec.describe MovieService do
 
   # This test is repeating a lot of the info above - how can I refactor?
   it "returns top rated movies", :vcr do
-    search = MovieService.new.top_rated_movies
+    search = @service.top_rated_movies
     expect(search).to be_a(Hash)
     expect(search[:results]).to be_an(Array)
 
@@ -29,5 +38,4 @@ RSpec.describe MovieService do
     expect(movie).to have_key(:vote_average)
     expect(movie[:vote_average]).to be_a(Float)
   end
-
 end
