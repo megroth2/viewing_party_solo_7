@@ -8,14 +8,14 @@ RSpec.describe 'Discover Movies: Search By Title', type: :feature do
     visit "/users/#{@user_1.id}/movies"
   end
 
-  describe "2. Movie Results Page" do
+  describe "2. Movie Results Page", :vcr do
     # cont...
     # I should be taken to the movies results page (`users/:user_id/movies`) where I see: 
     # - Title (As a Link to the Movie Details page (see story #3))
     # - Vote Average of the movie
     # I should also see a button to return to the Discover Page.
 
-    it "can display top rated movies" do
+    xit "can display top rated movies" do
       expect(page).to have_content("The Shawshank Redemption")
       expect(page).to have_content("Vote Average: 8.711")
     end

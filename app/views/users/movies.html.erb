@@ -1,15 +1,15 @@
 <% # the outer-most if statement could be moved to the movies action in the users controller, but I was encountering an issue so I put it here %> 
 <% if @user %>
 
-  <% if @movie_keyword_search_results != nil %>
+  <% if @movie_keyword_search_results != nil %> #return search results
     <% @movie_keyword_search_results.map do |movie| %>
-      <%= movie.title %>
-      <%= movie.vote_average %>
+      <%= @facade.movie.title %>
+      <%= @facade.movie.vote_average %>
     <% end %>
-  <% else %>
+  <% else %> # return top rated movies
     <% @top_rated_movies.map do |top_rated_movie| %>
-      <%= top_rated_movie.title %>
-      <%= top_rated_movie.vote_average %>
+      <%= @facade.top_rated_movie.title %>
+      <%= @facade.top_rated_movie.vote_average %>
     <% end%>
   <% end%>
     

@@ -25,9 +25,9 @@ class UsersController < ApplicationController
    end
 
    def movies # (keyword = nil) # how does keyword get passed in exactly?
-      @user = User.find_by(id: params[:id])
-      @top_rated_movies = MovieService.new.top_rated_movies
-      @movie_keyword_search_results = MovieService.new.movies_by_keyword(params[:keyword])
+      @user = User.find(params[:id])
+      @top_rated_movies = @facade.top_rated_movies
+      @movie_keyword_search_results = @facade.movie_keyword_search_results(params[:keyword])
       # flash[:alert] = "Error: user does not exist" unless @user # I moved this error to the movies view to avoid the same issue as above, but would like to refactor
    end
 
