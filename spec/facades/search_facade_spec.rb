@@ -16,9 +16,16 @@ RSpec.describe SearchFacade do
     expect(facade.movies).to be_an(Array)
     expect(results).to be_an(Array)
     expect(movie.title).to be_a(String)
-    expect(movie.vote_average).to be_an(Integer) # is this supposed to be a string? Is it converted to a string when its made into a poro?
+    expect(movie.vote_average).to be_an(Integer) # will this error out if its a float?
+  end
+
+  xit "converts movies to poros", :vcr do
+    facade = SearchFacade.new("princess")
+    results = facade.movie_keyword_search_results(facade.keyword)
 
     expect(facade.movies).to be_an(Array)
     expect(facade.movies.count).to eq(20)
+    expect(facade.movies.first.title).to be_a(String)
+    expect(facade.movies.first.vote_average).to be_an(Integer) # will this error out if its a float?
   end
 end
